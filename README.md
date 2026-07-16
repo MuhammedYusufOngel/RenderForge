@@ -16,6 +16,7 @@ This project is an OpenGL-based 3D graphics application written in C++. It demon
 - src/: C++ source files
 - include/: Header files
 - models/, meshes/, shaders/, images/: Scene and asset files
+- images-in-program/: Screenshot-style images used by the program
 - libraries/: Third-party dependencies such as GLFW, GLM, ImGui, and JSON
 - build/: Generated build files
 
@@ -44,3 +45,11 @@ If you are using the provided Visual Studio build setup, the project can also be
 ## Notes
 
 The scene and model data are loaded from the assets located in the models, meshes, shaders, and images folders. The project uses a custom rendering pipeline built around OpenGL and GLFW.
+
+## Program Screenshots
+
+The images in the images-in-program folder are included below as program output examples:
+
+- image_1.png
+- image_2.png
+- image_3.png
