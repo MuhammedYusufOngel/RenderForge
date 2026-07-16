@@ -50,6 +50,6 @@ The scene and model data are loaded from the assets located in the models, meshe
 
 The images in the images-in-program folder are included below as program output examples:
 
-!(https://github.com/MuhammedYusufOngel/RenderForge/blob/main/images-in-program/image_1.png)
-!(https://github.com/MuhammedYusufOngel/RenderForge/blob/main/images-in-program/image_2.png)
-!(https://github.com/MuhammedYusufOngel/RenderForge/blob/main/images-in-program/image_3.png)
+![Image 1](./images-in-program/image_1.png)
+![Image 2](./images-in-program/image_2.png)
+![Image 3](./images-in-program/image_3.png)
