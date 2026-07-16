@@ -1,0 +1,17 @@
+{
+    "ModelName":"Camera",
+    "TextureName":"container.jpg",
+    "ShaderProgramName":"UnlitTexturedShader",
+    "IsBasicShape":true,
+    "MeshFile":"",
+    "ShapeType":"Camera",
+    "Position":[
+        0.0,0.0,0.0
+    ],
+    "Euler":[
+        0.0,0.0,0.0
+    ],
+    "Scale":[
+        0.2,0.2,0.3
+    ]
+}

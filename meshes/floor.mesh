@@ -1,0 +1,19 @@
+{
+    "MeshName":"square",
+    "VertexAttributeCount":2,
+    "VertexAttributes":[
+        "Position",
+        "Texture"
+    ],
+    "TriangleCount":2,
+    "Vertices":[
+        0.0,   10.0,   0.0,    0.0,    0.0,
+        10.0,  10.0,   0.0,    1.0,    0.0,
+        10.0,   10.0,  20.0,    1.0,    1.0,
+        0.0,  10.0,    20.0,    0.0,    1.0
+    ],
+    "Indices":[
+        0,1,2,
+        0,2,3
+    ]
+}

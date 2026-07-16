@@ -1,0 +1,3 @@
+﻿  scene.cpp
+F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\src\scene.cpp(277): warning C4715: 'graf::Scene::findParent': not all control paths return a value
+  build.vcxproj -> F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\build\Debug\build.exe

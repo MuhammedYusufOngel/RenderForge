@@ -1,0 +1,3 @@
+F:/1_Uni/4/1/Bilgisayar Grafikleri/Odev-2/Computer-Graphics-Project-2/build/CMakeFiles/build.dir
+F:/1_Uni/4/1/Bilgisayar Grafikleri/Odev-2/Computer-Graphics-Project-2/build/CMakeFiles/ALL_BUILD.dir
+F:/1_Uni/4/1/Bilgisayar Grafikleri/Odev-2/Computer-Graphics-Project-2/build/CMakeFiles/ZERO_CHECK.dir

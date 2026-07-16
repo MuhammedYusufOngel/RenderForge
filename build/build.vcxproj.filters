@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\src\glad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\src\glwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\src\shaderfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\src\shaderprogram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\src\vertexbuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\src\vertexarrayobject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\src\meshloader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\src\texturemanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\src\transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\src\indexbuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\src\shadermanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\src\sceneobject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\src\model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\src\camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\src\viewport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\src\scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\libraries\imgui\imgui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\libraries\imgui\imgui_draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\libraries\imgui\imgui_tables.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\libraries\imgui\imgui_widgets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\libraries\imgui\backends\imgui_impl_glfw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\libraries\imgui\backends\imgui_impl_opengl3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\1_Uni\4\1\Bilgisayar Grafikleri\Odev-2\Computer-Graphics-Project-2\build\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{ACF93DF7-0DDF-30AD-9EE7-B911BC2ABD6A}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

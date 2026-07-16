@@ -1,0 +1,10 @@
+^F:\1_UNI\4\1\BILGISAYAR GRAFIKLERI\ODEV-2\COMPUTER-GRAPHICS-PROJECT-2\BUILD\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SF:/1_Uni/4/1/Bilgisayar Grafikleri/Odev-2/Computer-Graphics-Project-2/build" "-BF:/1_Uni/4/1/Bilgisayar Grafikleri/Odev-2/Computer-Graphics-Project-2/build" --check-stamp-file "F:/1_Uni/4/1/Bilgisayar Grafikleri/Odev-2/Computer-Graphics-Project-2/build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
