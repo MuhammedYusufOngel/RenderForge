@@ -317,7 +317,7 @@ namespace graf
             vector<VertexUnlit> vertices;
             vector<unsigned int> indices;
 
-            float angle =90;
+            float angle =20;
 
             int vertexCount = 360.0f/angle;
             vertices.resize(vertexCount*4);

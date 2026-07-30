@@ -1,7 +1,7 @@
 #include "texturemanager.hpp"
 
-#include<stb/stb_image.h>
-#include<glad/glad.h>
+#include <stb/stb_image.h>
+#include <glad/glad.h>
 namespace graf
 {
     TextureManager* TextureManager::m_instance=nullptr;

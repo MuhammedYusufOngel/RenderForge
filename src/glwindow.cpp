@@ -71,7 +71,7 @@ namespace graf{
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
         glfwSetErrorCallback(error_callback);
 
-        m_window = glfwCreateWindow(width, height, "Deneme", NULL, NULL);
+        m_window = glfwCreateWindow(width, height, "RenderForge", NULL, NULL);
         if (!m_window)
         {
             // Window or OpenGL context creation failed

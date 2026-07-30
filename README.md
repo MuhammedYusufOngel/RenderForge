@@ -1,74 +1,193 @@
 # RenderForge
 
-![C++](https://img.shields.io/badge/C++-17-blue.svg?style=flat&logo=c%2B%2B)
-![OpenGL](https://img.shields.io/badge/OpenGL-Modern-green.svg?style=flat&logo=opengl)
-![CMake](https://img.shields.io/badge/CMake-Build-orange.svg?style=flat&logo=cmake)
-![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey.svg?style=flat&logo=windows)
+RenderForge is a real-time 3D graphics rendering engine and interactive scene viewer built from scratch using modern C++ (C++17) and OpenGL (3.3 Core Profile). The primary objective of the project is to demonstrate core computer graphics principles, including a custom graphics pipeline, a hierarchical scene graph architecture, data-driven JSON asset management, multi-viewport rendering, and real-time interactive parameter controls.
 
-A modern, custom 3D graphics application built from scratch utilizing C++ and OpenGL. This project demonstrates core computer graphics concepts, a robust rendering pipeline, and real-time interactive systems.
+## About the Project
 
-## Overview
+RenderForge addresses the need for a transparent, modular, and lightweight 3D graphics engine that exposes low-level rendering mechanics without relying on monolithic commercial game engines. Commercial engines often obscure GPU buffer management, transformation matrix cascades, shader bindings, and viewport scissor operations.
 
-In this project, I developed a custom 3D graphics application. The primary focus was to build a robust rendering pipeline from scratch, combining essential computer graphics concepts with clean software architecture. To achieve this, a structured system was designed featuring textured model loading, an interactive camera system, and a real-time graphical user interface.
+The application initializes an OpenGL context using GLFW and GLAD, loads 3D meshes, shaders, textures, and scene object configurations via custom JSON specifications, and executes a real-time frame loop. Within this loop, the engine evaluates spatial transform hierarchies, manages independent viewports with distinct cameras, executes GLSL shaders, and renders 3D geometry. Furthermore, it integrates Dear ImGui to provide runtime control over scene graph nodes, object transforms, camera attachment, and object instantiation.
 
-## Key Features & Architecture
+## Screenshots and Demo
 
-- **Custom Rendering Pipeline:** Core rendering system using OpenGL and GLFW, handling shader compilation, buffer data management, and the efficient rendering of 3D meshes and complex textured models.
-- **Interactive Camera System:** Flexible, user-controlled camera architecture with responsive keyboard movement and mouse-based look mechanics for seamless real-time exploration.
-- **GUI Integration & Multiple Viewports:** Integrated ImGui for a functional graphical user interface overlaid on the 3D scene, alongside support for rendering the environment through multiple distinct viewports simultaneously.
-- **Clean C++ Architecture:** High maintainability and scalability utilizing a CMake-based build system, organizing source code, headers, shaders, and external dependencies (GLM, JSON) into a clear, modular structure.
+Application screenshots demonstrating the rendering pipeline, multi-viewport layout, scene graph hierarchy, and Dear ImGui control panels:
+
+<p align="center">
+  <img src="images-in-program/image_1.png" alt="RenderForge Preview 1" width="30%">
+  <img src="images-in-program/image_2.png" alt="RenderForge Preview 2" width="30%">
+  <img src="images-in-program/image_3.png" alt="RenderForge Preview 3" width="30%">
+</p>
+
+```md
+[Project Demonstration Video](https://www.youtube.com/watch?v=Djb5ZFyzdWA)
+```
+
+## Features
+
+* **Custom OpenGL Rendering Pipeline:** Directly manages OpenGL Vertex Buffer Objects (VBO), Index Buffer Objects (IBO), and Vertex Array Objects (VAO) to execute indexed drawing commands (`glDrawElements`).
+* **Hierarchical Scene Graph Architecture:** Implements a parent-child object hierarchy (`SceneObject`) where child nodes recursively inherit concatenated world transformation matrices from their parent nodes.
+* **Multi-Viewport & Multi-Camera Support:** Renders a 3D scene through multiple independent viewports (`ViewPort`) simultaneously using `glViewport` and `glScissor`, with each viewport bound to an individual perspective camera (`Camera`).
+* **Data-Driven JSON Asset System:** Parses shader specifications, texture maps, model hierarchy metadata, and 3D mesh geometry (vertices, UV coordinates, indices) from `.json` and `.mesh` files using `nlohmann/json`.
+* **Procedural Primitive Mesh Generation:** Programmatically generates vertex and index data for geometric primitives (circles, cones, cylinders, and composite camera indicators) via `MeshLoader`.
+* **Real-Time Graphical User Interface (GUI):** Integrates Dear ImGui to display an interactive scene tree, runtime transformation sliders (position, euler rotation, scale), object removal, shape creation menus, and camera attachment options.
+* **Interactive First-Person Camera Controls:** Offers keyboard translation (W/A/S/D) for spatial navigation and right-click mouse dragging for camera pitch and yaw rotations.
+* **Dynamic Texture & Shader Management:** Utilizes singleton managers (`TextureManager`, `ShaderManager`) to load, compile, link, cache, and activate GLSL shaders and 2D image textures (`stb_image`) on demand.
+
+## Technologies Used
+
+* **C++ (C++17)** — Core programming language used for object-oriented engine architecture, memory management, and system logic.
+* **OpenGL (v3.3 Core Profile)** — Low-level 3D graphics API used for hardware-accelerated rendering, buffer binding, depth testing, and scissor operations.
+* **GLFW (v3.4)** — Cross-platform library used for window creation, OpenGL context initialization, and handling keyboard/mouse input callbacks.
+* **GLAD** — OpenGL function loading library used to resolve OpenGL function pointers at runtime.
+* **GLM (OpenGL Mathematics)** — Mathematics library used for 3D vectors, matrix transformations (translation, rotation, scaling), and Left-Handed perspective projection matrices (`glm::perspectiveLH`).
+* **Dear ImGui** — Immediate-mode graphical user interface library used for building real-time scene control windows, transform adjustment sliders, and object property inspectors.
+* **nlohmann/json** — Header-only JSON library used to parse mesh data (`.mesh`), model metadata (`.json`), and shader manifests (`.json`).
+* **stb_image (stb)** — Public domain single-header image loader used to read image files (`.jpg`, `.png`) into RAM for OpenGL 2D texture generation (`glGenTextures`, `glTexImage2D`, `glGenerateMipmap`).
+* **CMake (v3.5+)** — Cross-platform build system generator used to configure project compilation, manage include paths, and link external static/shared libraries.
 
 ## Project Structure
 
 ```text
-Computer-Graphics-Project-2
- ┣ src/              # C++ source files (.cpp)
- ┣ include/          # Header files (.hpp / .h)
- ┣ shaders/          # Vertex and Fragment shaders (.glsl)
- ┣ models/           # 3D model assets
- ┣ meshes/           # Mesh data
- ┣ images/           # Textures and image assets
- ┣ libraries/        # Dependencies (GLFW, GLM, ImGui, JSON)
- ┣ images-in-program/# Screenshots of the application
- ┗ README.md         # Project documentation
+RenderForge/
+├── CMakeLists.txt             # Main CMake build configuration file
+├── README.md                  # Project documentation
+├── include/                   # Engine header files (.hpp)
+│   ├── camera.hpp             # Perspective camera class definition
+│   ├── glwindow.hpp           # GLFW window wrapper & callback declarations
+│   ├── indexbuffer.hpp        # OpenGL Index Buffer Object (IBO) wrapper
+│   ├── meshloader.hpp         # JSON mesh parser & procedural shape builder
+│   ├── model.hpp              # Model class binding VAO, shader & texture
+│   ├── scene.hpp              # Scene manager, multi-viewport rendering & ImGui GUI
+│   ├── sceneobject.hpp        # Scene graph base node & tree logic
+│   ├── shadermanager.hpp      # Shader compilation, linking & caching manager
+│   ├── shaderprogram.hpp      # GLSL shader program binding & uniform interface
+│   ├── texturemanager.hpp     # Image loading & 2D texture cache manager
+│   ├── transform.hpp          # 3D spatial transformation matrix calculations
+│   ├── vertexarrayobject.hpp  # OpenGL Vertex Array Object (VAO) wrapper
+│   ├── vertexbuffer.hpp       # OpenGL Vertex Buffer Object (VBO) wrapper
+│   └── viewport.hpp           # Viewport region rendering & scissor configuration
+├── src/                       # Engine source implementation files (.cpp)
+│   ├── main.cpp               # Application entry point & scene initialization
+│   ├── camera.cpp             # Perspective projection & view matrix updates
+│   ├── glad.c                 # GLAD function loader implementation
+│   ├── glwindow.cpp           # GLFW window management & main rendering loop
+│   ├── meshloader.cpp         # Mesh loading routines & procedural geometry
+│   ├── model.cpp              # Model JSON parsing & draw calls
+│   ├── scene.cpp              # Scene graph traversal, GUI layout & viewport execution
+│   ├── sceneobject.cpp        # Node hierarchy management & matrix propagation
+│   ├── shadermanager.cpp      # Shader file parsing & compilation routines
+│   ├── texturemanager.cpp     # stb_image integration & OpenGL texture binding
+│   ├── transform.cpp          # Extrinsic/intrinsic Euler rotations & matrix composition
+│   └── viewport.cpp           # Viewport activation & background buffer clears
+├── shaders/                   # GLSL shader files & JSON definitions
+│   ├── UnlitTexturedShader.json
+│   └── UnlitTexturedShader/
+│       ├── unlittextureshader_vertex.glsl
+│       └── unlittextureshader_fragment.glsl
+├── models/                    # Model definition JSON files (Cube, Wall, Floor, etc.)
+├── meshes/                    # Pre-defined JSON mesh geometry files (.mesh)
+├── images/                    # Texture image files (.jpg, .png)
+├── images-in-program/         # Application screenshots used for documentation
+└── libraries/                 # Third-party dependencies (GLFW, GLM, ImGui, nlohmann, stb)
 ```
 
-## Prerequisites
+## Technical Details
 
-To build and run this project, you will need:
-- **CMake** (version 3.5 or newer)
-- **C++ Compiler** with C++17 support (e.g., MSVC, GCC, Clang)
-- **Windows OS** (Current setup assumes a Windows environment)
+### 1. Scene Graph Architecture & Matrix Propagation
+RenderForge models spatial object hierarchies using a composite design pattern implemented in `SceneObject`. Every renderable component or group node inherits from `SceneObject` and stores pointers to its children (`m_childs`).
 
-## Build Instructions
+Transformations are calculated hierarchically during scene traversal:
+* Each node computes its local `worldMatrix` in `Transform::update()` by combining translation (`mtxTranslate`), rotation (`rotationMatrix`), and scaling (`mtxScale`):
+  $$\text{worldMatrix} = \text{mtxTranslate} \times \text{rotationMatrix} \times \text{mtxScale}$$
+* Matrix transformations cascade down the scene hierarchy via `SceneObject::updateChilds()`. A parent node multiplies its combined matrix by its local world matrix and passes the result to its children:
+  $$\text{childCombinedMatrix} = \text{parentCombinedMatrix} \times \text{parentWorldMatrix}$$
+* When rendering a `Model`, the final model matrix uploaded to the GPU shader uniform is:
+  $$\text{FinalWorld} = \text{parentCombinedMatrix} \times \text{worldMatrix}$$
 
-This project uses CMake as its build system. To compile the project, run the following commands from the repository root:
+### 2. Intrinsic vs. Extrinsic Euler Rotations
+The engine's `Transform` class supports two rotation modes specified by `isInstrinsic`:
+* **Extrinsic Rotations:** Computes global-axis rotation matrices by applying sequential rotations around fixed world axes:
+  $$\mathbf{R} = \mathbf{R}_z(\theta_z) \mathbf{R}_y(\theta_y) \mathbf{R}_x(\theta_x)$$
+* **Intrinsic Rotations:** Computes body-fixed rotations by dynamically transforming local axis vectors (`vecRight`, `vecUp`, `vecLook`) according to incremental yaw, pitch, and roll angles. The normalized directional vectors form the columns of the final rotation matrix $\mathbf{R}$.
 
-```bash
-# 1. Generate build files (using Ninja or your preferred generator)
-cmake -S . -B build -G Ninja
+### 3. Multi-Viewport & Multi-Camera Rendering System
+The `ViewPort` class abstracts sub-regions of the application window:
+* Each viewport defines screen bounds $(x, y, \text{width}, \text{height})$ and a target clear color.
+* During the frame render loop (`Scene::draw()`), `ViewPort::activateScissor()` invokes `glScissor(x, y, width, height)` to constrain clearing operations (`glClear`) to that specific rectangular area.
+* `glViewport(x, y, width, height)` is called, and the viewport's attached `Camera` uploads its perspective view-projection matrix ($\mathbf{P} \times \mathbf{V}$) to the active GLSL shader.
+* This setup allows rendering the same 3D world simultaneously from different camera viewpoints (e.g., a primary main-view camera and a secondary top-right corner picture-in-picture camera).
 
-# 2. Build the project
-cmake --build build
-```
-*(If you are using Visual Studio, you can also open the folder directly as a CMake project.)*
+### 4. Data-Driven JSON Asset System & Singleton Resource Caching
+To decouple code logic from hardcoded assets:
+* **`MeshLoader`:** Reads `.mesh` JSON files containing vertex position/texture attributes and element index lists. It initializes OpenGL `VertexBuffer` and `IndexBuffer` objects, configures attribute pointers via `VertexArrayObject`, and caches VAO instances in an `std::unordered_map` to prevent redundant memory allocations.
+* **`ShaderManager`:** Reads shader JSON manifests specifying GLSL vertex/fragment filenames and uniform parameter names (`uWorldMatrix`, `uProjectionMatrix`). It compiles GLSL source code, links programs via `ShaderProgram`, queries uniform locations, and caches compiled programs.
+* **`TextureManager`:** Reads image files via `stb_image`, transfers raw pixel buffers to GPU memory via `glTexImage2D`, generates mipmaps (`glGenerateMipmap`), and caches OpenGL texture handles by filename.
 
-## Controls
+## Installation and Execution
 
-Navigate the 3D scene with the following intuitive controls:
-- **`W` / `A` / `S` / `D`**: Move the camera (Forward, Left, Backward, Right)
-- **`Right Mouse Button` + `Drag`**: Rotate the camera view (Look around)
+### Prerequisites
+* **Operating System:** Windows OS (pre-configured CMake setup targets Windows development environments).
+* **Build Tool:** CMake (version 3.5 or higher).
+* **Compiler:** C++17 compliant C++ compiler (e.g., MSVC, GCC, Clang).
 
-## Screenshots
+### Build Steps
 
-Here are some previews of the rendering pipeline in action:
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/MuhammedYusufOngel/RenderForge.git
+   cd RenderForge
+   ```
 
-<p align="center">
-  <img src="images-in-program/image_1.png" alt="Screenshot 1" width="30%">
-  <img src="images-in-program/image_2.png" alt="Screenshot 2" width="30%">
-  <img src="images-in-program/image_3.png" alt="Screenshot 3" width="30%">
-</p>
+2. **Generate build files via CMake:**
+   ```bash
+   cmake CMakeLists.txt -B build
+   ```
 
-## Learning Outcomes
+3. **Compile the binary:**
+   ```bash
+   cmake --build build
+   ```
 
-This project significantly improved my understanding of low-level graphics programming and the complete rendering pipeline within OpenGL. I gained practical experience in applying complex 3D mathematics using GLM, seamlessly integrating third-party libraries into a C++ environment, and structuring a robust codebase suitable for real-time graphics applications.
+4. **Execute the application:**
+   ```bash
+   cd build
+   .\Debug\build.exe
+   ```
+   *(Note: The working directory must allow relative path resolving to `../models`, `../meshes`, `../shaders`, and `../images`)*.
+
+## Usage
+
+Once the application launches:
+1. **Camera Controls:**
+   * **`W` Key:** Move camera forward along local look vector.
+   * **`S` Key:** Move camera backward.
+   * **`A` Key:** Strafe camera left along local right vector.
+   * **`D` Key:** Strafe camera right.
+   * **Right Mouse Button + Drag:** Rotate camera orientation (yaw and pitch).
+
+2. **Graphical Interface Controls (Dear ImGui):**
+   * **Scene Window:** Displays the hierarchy tree (`TreeNode`) of scene nodes starting from `Root`. Clicking an object selects it.
+   * **Properties Window:**
+     * **Transformation:** Modify selected object's `Position` $(x, y, z)$, `Rotation` $(\theta_x, \theta_y, \theta_z)$, and `Scale` $(s_x, s_y, s_z)$ via interactive float sliders.
+     * **Create Shape:** Select a primitive type (Cube, Pyramid, Camera, Cylinder) from the dropdown menu and click **Create Shape** to attach a new node under the selected object.
+     * **Attach to Camera:** Binds the selected object's spatial transform directly to a camera attached to the secondary viewport.
+     * **Remove Button:** Recursively deletes the selected object and all child nodes from the scene graph.
+
+## Development Process
+
+During the development process of this project, AI-assisted tools were utilized for code suggestions, error diagnostics, technical research, and workflow acceleration. The core engine architecture, technical decision-making, component integrations, testing, and feature implementations were evaluated, designed, and executed by the developer.
+
+## Future Improvements
+
+* **Illumination & Lighting System:** Implement active directional, point, and spot lighting models (Phong/Blinn-Phong illumination) within GLSL fragment shaders (currently `SceneObjectType::Light` enum exists, but active shaders operate in unlit textured mode).
+* **Material System Expansion:** Extend shader and model JSON configurations to support specular maps, normal maps, metallic/roughness values, and ambient occlusion parameters.
+* **Standard 3D Asset Format Importing:** Expand `MeshLoader` to parse standard 3D asset formats (such as OBJ or FBX using the bundled `OpenFBX` library).
+* **Spatial Partitioning & Frustum Culling:** Integrate Bounding Volume Hierarchies (BVH) or Octrees alongside view-frustum culling to optimize rendering efficiency for complex scenes.
+* **Post-Processing Framebuffer Effects:** Introduce Framebuffer Objects (FBO) for off-screen rendering and post-processing filters such as bloom, tone mapping, and anti-aliasing.
+
+## Developer
+
+* **Developer:** Muhammed Yusuf Öngel
+* **GitHub:** [https://github.com/MuhammedYusufOngel]
+* **LinkedIn:** [https://www.linkedin.com/in/muhammed-yusuf-öngel-56a399302/]
+* **Portfolio:** [https://muhammedyusufongel.github.io]

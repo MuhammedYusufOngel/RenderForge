@@ -7,17 +7,17 @@ math(EXPR BaslangicIndeks "${BaslangicIndeks}+1")
 string(SUBSTRING ${CMAKE_CURRENT_SOURCE_DIR} ${BaslangicIndeks} -1 ProjeIsmi)
 
 #proje ismi belirleniyor
-project(${ProjeIsmi})
+project(build)
 
 #proje klasörünün yolu yeni bir değişkene atanıyor
 set(Project_Dir ${CMAKE_SOURCE_DIR})
 
-set(Kutuphane_Dir ${Project_Dir}/../libraries)
+set(Kutuphane_Dir ${Project_Dir}/libraries)
 
 #inlcude ve src klasör yollarıda yeni bir değişkene atanıyor
-set(Project_Include_Dir ${Project_Dir}/../include)
+set(Project_Include_Dir ${Project_Dir}/include)
 
-set(Project_Src_Dir ${Project_Dir}/../src)
+set(Project_Src_Dir ${Project_Dir}/src)
 
 set(ImGui_Source_files  ${Kutuphane_Dir}/imgui/imgui.cpp
                         ${Kutuphane_Dir}/imgui/imgui_draw.cpp
