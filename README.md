@@ -10,17 +10,9 @@ The application initializes an OpenGL context using GLFW and GLAD, loads 3D mesh
 
 ## Screenshots and Demo
 
-Application screenshots demonstrating the rendering pipeline, multi-viewport layout, scene graph hierarchy, and Dear ImGui control panels:
+You can click and watch the video.
 
-<p align="center">
-  <img src="images-in-program/image_1.png" alt="RenderForge Preview 1" width="30%">
-  <img src="images-in-program/image_2.png" alt="RenderForge Preview 2" width="30%">
-  <img src="images-in-program/image_3.png" alt="RenderForge Preview 3" width="30%">
-</p>
-
-```md
-[Project Demonstration Video](https://www.youtube.com/watch?v=Djb5ZFyzdWA)
-```
+[![RenderForge](https://img.youtube.com/vi/Djb5ZFyzdWA/maxresdefault.jpg)](https://www.youtube.com/watch?v=Djb5ZFyzdWA)
 
 ## Features
 
