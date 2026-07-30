@@ -8,7 +8,7 @@ RenderForge addresses the need for a transparent, modular, and lightweight 3D gr
 
 The application initializes an OpenGL context using GLFW and GLAD, loads 3D meshes, shaders, textures, and scene object configurations via custom JSON specifications, and executes a real-time frame loop. Within this loop, the engine evaluates spatial transform hierarchies, manages independent viewports with distinct cameras, executes GLSL shaders, and renders 3D geometry. Furthermore, it integrates Dear ImGui to provide runtime control over scene graph nodes, object transforms, camera attachment, and object instantiation.
 
-## Screenshots and Demo
+## Program Video
 
 You can click and watch the video.
 
